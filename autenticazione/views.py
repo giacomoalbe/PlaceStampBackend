@@ -311,9 +311,9 @@ class CarDetail(generics.RetrieveUpdateDestroyAPIView):
 	serializer_class = CarSerializer
 
 
-def upload(request):
+class Upload(views.APIView):
 
-	if request.method == 'POST':
+	def post(self, request):
 
 		image = request.data.get('image', None)
 		prova = request.data.get('prova', None)
