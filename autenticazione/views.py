@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
 
-from django.db import *
+#from django.db import *
 
 from rest_framework import status, generics, permissions, views
 from rest_framework.response import Response
