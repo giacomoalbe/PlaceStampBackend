@@ -106,14 +106,14 @@ class LoginView(views.APIView):
 		email = request.data.get('username', None)
 		password = request.data.get('password', None)
 		
-		print email
-		print password
+		print(email)
+		print(password)
 
 		#email = 'culo@culo.com'
 		#password = 'culo'
 		account = authenticate(email=email, password=password)
 
-		print account
+		print(account)
 
 		if account is not None:
 			if account.is_active:
@@ -141,7 +141,7 @@ class LoginView(views.APIView):
 		# Only for debug
 
 		for elem in request.data.keys():
-			print elem
+			print(elem)
 		email = request.data.get('userame', None)
 		password = request.data.get('password', None)
 
@@ -184,7 +184,7 @@ class NewUser(views.APIView):
 
 		try: 
 
-			print request.data['user']
+			print(request.data['user'])
 			# Creiamo un nuovo utente
 			newUser = dict(request.data['user'])
 
@@ -195,7 +195,7 @@ class NewUser(views.APIView):
 			cognome = newUser.get('cognome', None)
 			username = newUser.get('email', None)
 
-			print nickname
+			print(nickname)
 
 			if password and confirm_password and password == confirm_password:
 				
@@ -220,12 +220,12 @@ class NewUser(views.APIView):
 
 			exc_type, exc_value, exc_traceback = sys.exc_info()
 
-			print sys.exc_info()[0]
+			print(sys.exc_info()[0])
 
-			print "***********"
-			print exc_value
-			print type(exc_value)
-			print "**************"
+			print( "***********")
+			print( exc_value)
+			print( type(exc_value))
+			print( "**************")
 
 			errStatus = {
 				'errore' : 'Ci sono errori!',
@@ -276,8 +276,8 @@ class NewPost(views.APIView):
 			title = request.data.get('title', None)
 			content = request.data.get('content', None)
 
-			print title
-			print content
+			print( title)
+			print( content)
 
 			if title and content:
 
@@ -321,8 +321,8 @@ def upload(request):
 		image = request.data.get('image', None)
 		prova = request.data.get('prova', None)
 
-		print image
-		print prova
+		print(image)
+		print(prova)
 
 		return Response({'prova': prova, 'status': 'OK'}, status=status.HTTP_201_CREATED)
 
