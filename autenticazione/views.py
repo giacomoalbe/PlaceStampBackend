@@ -210,10 +210,7 @@ class NewUser(views.APIView):
 				return Response({'user': userSerial.data}, status=status.HTTP_201_CREATED)
 			else:
 				return Response({'errore': 'Le password non coincidono!'}, status=status.HTTP_400_BAD_REQUEST)
-
 		except IntegrityError, err:
-
-
 			# Stiamo chercando di inserire un utente con lo stesso nome!
 			return Response({'errore': "Utente gia presente nel db!", 'more': str(err)})
 		except:
