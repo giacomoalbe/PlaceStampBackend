@@ -1,1 +1,1 @@
-{"error":{"message":"[Errno 2] No such file or directory: u'autenticazione/static/wer.jpg'","args":[2,"No such file or directory"],"type":"<type 'exceptions.IOError'>"}}
+{"error":{"message":"Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance.","args":["Cannot call `.is_valid()` as no `data=` keyword argument was passed when instantiating the serializer instance."],"type":"<type 'exceptions.AssertionError'>"}}
