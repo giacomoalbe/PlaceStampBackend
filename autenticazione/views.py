@@ -357,7 +357,7 @@ class Upload(views.APIView):
 		except Exception as e:
 
 			errors = {
-				'type': type(e),
+				'type': str(type(e)),
 				'args': list(e.args),
 				'message' : str(e)
 			}

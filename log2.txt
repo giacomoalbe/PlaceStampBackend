@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="robots" content="NONE,NOARCHIVE">
-  <title>NameError at /upload/</title>
+  <title>TypeError at /upload/</title>
   <style type="text/css">
     html * { padding:0; margin:0; }
     body * { padding:10px 20px; }
@@ -121,8 +121,8 @@
 </head>
 <body>
 <div id="summary">
-  <h1>NameError at /upload/</h1>
-  <pre class="exception_value">global name &#39;JSON&#39; is not defined</pre>
+  <h1>TypeError at /upload/</h1>
+  <pre class="exception_value">&lt;class &#39;binascii.Error&#39;&gt; is not JSON serializable</pre>
   <table class="meta">
 
     <tr>
@@ -141,19 +141,19 @@
 
     <tr>
       <th>Exception Type:</th>
-      <td>NameError</td>
+      <td>TypeError</td>
     </tr>
 
 
     <tr>
       <th>Exception Value:</th>
-      <td><pre>global name &#39;JSON&#39; is not defined</pre></td>
+      <td><pre>&lt;class &#39;binascii.Error&#39;&gt; is not JSON serializable</pre></td>
     </tr>
 
 
     <tr>
       <th>Exception Location:</th>
-      <td>/home/giacomoalbe/PlaceStampBackend/autenticazione/views.py in post, line 365</td>
+      <td>/usr/lib/python2.7/json/encoder.py in default, line 184</td>
     </tr>
 
     <tr>
@@ -184,7 +184,7 @@
     </tr>
     <tr>
       <th>Server time:</th>
-      <td>Tue, 1 Sep 2015 15:35:42 +0000</td>
+      <td>Tue, 1 Sep 2015 15:36:38 +0000</td>
     </tr>
   </table>
 </div>
@@ -204,43 +204,43 @@
           <code>/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/django/core/handlers/base.py</code> in <code>get_response</code>
 
           
-            <div class="context" id="c140699215745680">
+            <div class="context" id="c139963387407392">
               
-                <ol start="125" class="pre-context" id="pre140699215745680">
+                <ol start="157" class="pre-context" id="pre139963387407392">
                 
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                    response = middleware_method(request, callback, callback_args, callback_kwargs)</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>                    response = middleware_method(request, response)</pre></li>
                 
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                    if response:</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>                    # Complain if the template response middleware returned None (a common error).</pre></li>
                 
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                        break</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>                    if response is None:</pre></li>
                 
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>                        raise ValueError(</pre></li>
                 
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>            if response is None:</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>                            &quot;%s.process_template_response didn&#39;t return an &quot;</pre></li>
                 
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                wrapped_callback = self.make_view_atomic(callback)</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>                            &quot;HttpResponse object. It returned None instead.&quot;</pre></li>
                 
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                try:</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>                            % (middleware_method.__self__.__class__.__name__))</pre></li>
                 
                 </ol>
               
-              <ol start="132" class="context-line">
-                <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>
-                                response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre> <span>...</span></li></ol>
+              <ol start="164" class="context-line">
+                <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>
+                            response = response.render()</pre> <span>...</span></li></ol>
               
-                <ol start='133' class="post-context" id="post140699215745680">
+                <ol start='165' class="post-context" id="post139963387407392">
                   
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                except Exception as e:</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre></pre></li>
                   
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                    # If the view raised an exception, run it through exception</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>        except http.Http404 as e:</pre></li>
                   
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                    # middleware, and if the exception middleware returns a</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>            logger.warning(&#39;Not Found: %s&#39;, request.path,</pre></li>
                   
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                    # response, use that. Otherwise, reraise the exception.</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>                        extra={</pre></li>
                   
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                    for middleware_method in self._exception_middleware:</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>                            &#39;status_code&#39;: 404,</pre></li>
                   
-                  <li onclick="toggle('pre140699215745680', 'post140699215745680')"><pre>                        response = middleware_method(request, e)</pre></li>
+                  <li onclick="toggle('pre139963387407392', 'post139963387407392')"><pre>                            &#39;request&#39;: request</pre></li>
                   
               </ol>
               
@@ -250,10 +250,10 @@
           
             <div class="commands">
                 
-                    <a href="#" onclick="return varToggle(this, '140699215745680')"><span>&#x25b6;</span> Local vars</a>
+                    <a href="#" onclick="return varToggle(this, '139963387407392')"><span>&#x25b6;</span> Local vars</a>
                 
             </div>
-            <table class="vars" id="v140699215745680">
+            <table class="vars" id="v139963387407392">
               <thead>
                 <tr>
                   <th>Variable</th>
@@ -261,11 +261,6 @@
                 </tr>
               </thead>
               <tbody>
-                
-                  <tr>
-                    <td>e</td>
-                    <td class="code"><pre>NameError(&quot;global name &#39;JSON&#39; is not defined&quot;,)</pre></td>
-                  </tr>
                 
                   <tr>
                     <td>callback_args</td>
@@ -279,27 +274,27 @@
                 
                   <tr>
                     <td>middleware_method</td>
-                    <td class="code"><pre>&lt;bound method CsrfViewMiddleware.process_view of &lt;django.middleware.csrf.CsrfViewMiddleware object at 0x7ff716fba890&gt;&gt;</pre></td>
+                    <td class="code"><pre>&lt;bound method CsrfViewMiddleware.process_view of &lt;django.middleware.csrf.CsrfViewMiddleware object at 0x7f4bc8340890&gt;&gt;</pre></td>
                   </tr>
                 
                   <tr>
                     <td>self</td>
-                    <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x7ff7180f6e50&gt;</pre></td>
+                    <td class="code"><pre>&lt;django.core.handlers.wsgi.WSGIHandler object at 0x7f4bc947ce50&gt;</pre></td>
                   </tr>
                 
                   <tr>
                     <td>request</td>
-                    <td class="code"><pre>&quot;&lt;WSGIRequest\npath:/upload/,\nGET:&lt;QueryDict: {}&gt;,\nPOST:&lt;could not parse&gt;,\nCOOKIES:{},\nMETA:{&#39;CONTENT_LENGTH&#39;: &#39;85&#39;,\n &#39;CONTENT_TYPE&#39;: &#39;application/json&#39;,\n u&#39;CSRF_COOKIE&#39;: u&#39;YD6TLwoCp0IA0GtOjndARXSG6ah0Ei9R&#39;,\n &#39;DOCUMENT_ROOT&#39;: &#39;/usr/local/openresty/nginx/html&#39;,\n &#39;HTTP_ACCEPT&#39;: &#39;*/*&#39;,\n &#39;HTTP_CONNECTION&#39;: &#39;close&#39;,\n &#39;HTTP_CONTENT_LENGTH&#39;: &#39;85&#39;,\n &#39;HTTP_CONTENT_TYPE&#39;: &#39;application/json&#39;,\n &#39;HTTP_HOST&#39;: &#39;giacomoalbe.pythonanywhere.com&#39;,\n &#39;HTTP_USER_AGENT&#39;: &#39;curl/7.37.1&#39;,\n &#39;HTTP_X_FORWARDED_FOR&#39;: &#39;193.205.210.42&#39;,\n &#39;HTTP_X_REAL_IP&#39;: &#39;193.205.210.42&#39;,\n &#39;PATH_INFO&#39;: u&#39;/upload/&#39;,\n &#39;QUERY_STRING&#39;: &#39;&#39;,\n &#39;REMOTE_ADDR&#39;: &#39;10.81.168.55&#39;,\n &#39;REMOTE_PORT&#39;: &#39;49625&#39;,\n &#39;REQUEST_METHOD&#39;: &#39;POST&#39;,\n &#39;REQUEST_URI&#39;: &#39;/upload/&#39;,\n &#39;SCRIPT_NAME&#39;: u&#39;&#39;,\n &#39;SERVER_NAME&#39;: &#39;giacomoalbe.pythonanywhere.com&#39;,\n &#39;SERVER_PORT&#39;: &#39;80&#39;,\n &#39;SERVER_PROTOCOL&#39;: &#39;HTTP/1.1&#39;,\n &#39;uwsgi.node&#39;: &#39;giles-liveweb1&#39;,\n &#39;uwsgi.version&#39;: &#39;2.0.5.1&#39;,\n &#39;wsgi.errors&#39;: &lt;uwsgi_file__bin_user_wsgi_wrapper.ErrorLogFile object at 0x7ff716fba5d0&gt;,\n &#39;wsgi.file_wrapper&#39;: &lt;built-in function uwsgi_sendfile&gt;,\n &#39;wsgi.input&#39;: &lt;uwsgi._Input object at 0x7ff716ac6d68&gt;,\n &#39;wsgi.multiprocess&#39;: False,\n &#39;wsgi.multithread&#39;: False,\n &#39;wsgi.run_once&#39;: False,\n &#39;wsgi.url_scheme&#39;: &#39;http&#39;,\n &#39;wsgi.version&#39;: (1, 0)}&gt;&quot;</pre></td>
+                    <td class="code"><pre>&quot;&lt;WSGIRequest\npath:/upload/,\nGET:&lt;QueryDict: {}&gt;,\nPOST:&lt;could not parse&gt;,\nCOOKIES:{},\nMETA:{&#39;CONTENT_LENGTH&#39;: &#39;85&#39;,\n &#39;CONTENT_TYPE&#39;: &#39;application/json&#39;,\n u&#39;CSRF_COOKIE&#39;: u&#39;wwIHCLUp5W7B0PXkQAzz05rng04ZdDth&#39;,\n &#39;DOCUMENT_ROOT&#39;: &#39;/usr/local/openresty/nginx/html&#39;,\n &#39;HTTP_ACCEPT&#39;: &#39;*/*&#39;,\n &#39;HTTP_CONNECTION&#39;: &#39;close&#39;,\n &#39;HTTP_CONTENT_LENGTH&#39;: &#39;85&#39;,\n &#39;HTTP_CONTENT_TYPE&#39;: &#39;application/json&#39;,\n &#39;HTTP_HOST&#39;: &#39;giacomoalbe.pythonanywhere.com&#39;,\n &#39;HTTP_USER_AGENT&#39;: &#39;curl/7.37.1&#39;,\n &#39;HTTP_X_FORWARDED_FOR&#39;: &#39;193.205.210.42&#39;,\n &#39;HTTP_X_REAL_IP&#39;: &#39;193.205.210.42&#39;,\n &#39;PATH_INFO&#39;: u&#39;/upload/&#39;,\n &#39;QUERY_STRING&#39;: &#39;&#39;,\n &#39;REMOTE_ADDR&#39;: &#39;10.81.168.55&#39;,\n &#39;REMOTE_PORT&#39;: &#39;52733&#39;,\n &#39;REQUEST_METHOD&#39;: &#39;POST&#39;,\n &#39;REQUEST_URI&#39;: &#39;/upload/&#39;,\n &#39;SCRIPT_NAME&#39;: u&#39;&#39;,\n &#39;SERVER_NAME&#39;: &#39;giacomoalbe.pythonanywhere.com&#39;,\n &#39;SERVER_PORT&#39;: &#39;80&#39;,\n &#39;SERVER_PROTOCOL&#39;: &#39;HTTP/1.1&#39;,\n &#39;uwsgi.node&#39;: &#39;giles-liveweb1&#39;,\n &#39;uwsgi.version&#39;: &#39;2.0.5.1&#39;,\n &#39;wsgi.errors&#39;: &lt;uwsgi_file__bin_user_wsgi_wrapper.ErrorLogFile object at 0x7f4bc83405d0&gt;,\n &#39;wsgi.file_wrapper&#39;: &lt;built-in function uwsgi_sendfile&gt;,\n &#39;wsgi.input&#39;: &lt;uwsgi._Input object at 0x7f4bc3e30d68&gt;,\n &#39;wsgi.multiprocess&#39;: False,\n &#39;wsgi.multithread&#39;: False,\n &#39;wsgi.run_once&#39;: False,\n &#39;wsgi.url_scheme&#39;: &#39;http&#39;,\n &#39;wsgi.version&#39;: (1, 0)}&gt;&quot;</pre></td>
                   </tr>
                 
                   <tr>
                     <td>callback</td>
-                    <td class="code"><pre>&lt;function Upload at 0x7ff716c59230&gt;</pre></td>
+                    <td class="code"><pre>&lt;function Upload at 0x7f4bc3fc1230&gt;</pre></td>
                   </tr>
                 
                   <tr>
                     <td>wrapped_callback</td>
-                    <td class="code"><pre>&lt;function Upload at 0x7ff716c59230&gt;</pre></td>
+                    <td class="code"><pre>&lt;function Upload at 0x7f4bc3fc1230&gt;</pre></td>
                   </tr>
                 
                   <tr>
@@ -314,7 +309,7 @@
                 
                   <tr>
                     <td>response</td>
-                    <td class="code"><pre>None</pre></td>
+                    <td class="code"><pre>&lt;rest_framework.response.Response object at 0x7f4bc3fc7350&gt;</pre></td>
                   </tr>
                 
                   <tr>
@@ -328,38 +323,46 @@
         </li>
       
         <li class="frame django">
-          <code>/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/django/views/decorators/csrf.py</code> in <code>wrapped_view</code>
+          <code>/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/django/template/response.py</code> in <code>render</code>
 
           
-            <div class="context" id="c140699215747264">
+            <div class="context" id="c139963387407176">
               
-                <ol start="51" class="pre-context" id="pre140699215747264">
+                <ol start="151" class="pre-context" id="pre139963387407176">
                 
-                  <li onclick="toggle('pre140699215747264', 'post140699215747264')"><pre>    &quot;&quot;&quot;</pre></li>
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre></pre></li>
                 
-                  <li onclick="toggle('pre140699215747264', 'post140699215747264')"><pre>    Marks a view function as being exempt from the CSRF view protection.</pre></li>
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>        If the content has already been rendered, this is a no-op.</pre></li>
                 
-                  <li onclick="toggle('pre140699215747264', 'post140699215747264')"><pre>    &quot;&quot;&quot;</pre></li>
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre></pre></li>
                 
-                  <li onclick="toggle('pre140699215747264', 'post140699215747264')"><pre>    # We could just do view_func.csrf_exempt = True, but decorators</pre></li>
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>        Returns the baked response instance.</pre></li>
                 
-                  <li onclick="toggle('pre140699215747264', 'post140699215747264')"><pre>    # are nicer if they don&#39;t have side-effects, so we return a new</pre></li>
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>        &quot;&quot;&quot;</pre></li>
                 
-                  <li onclick="toggle('pre140699215747264', 'post140699215747264')"><pre>    # function.</pre></li>
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>        retval = self</pre></li>
                 
-                  <li onclick="toggle('pre140699215747264', 'post140699215747264')"><pre>    def wrapped_view(*args, **kwargs):</pre></li>
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>        if not self._is_rendered:</pre></li>
                 
                 </ol>
               
-              <ol start="58" class="context-line">
-                <li onclick="toggle('pre140699215747264', 'post140699215747264')"><pre>
-                    return view_func(*args, **kwargs)</pre> <span>...</span></li></ol>
+              <ol start="158" class="context-line">
+                <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>
+                        self.content = self.rendered_content</pre> <span>...</span></li></ol>
               
-                <ol start='59' class="post-context" id="post140699215747264">
+                <ol start='159' class="post-context" id="post139963387407176">
                   
-                  <li onclick="toggle('pre140699215747264', 'post140699215747264')"><pre>    wrapped_view.csrf_exempt = True</pre></li>
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>            for post_callback in self._post_render_callbacks:</pre></li>
                   
-                  <li onclick="toggle('pre140699215747264', 'post140699215747264')"><pre>    return wraps(view_func, assigned=available_attrs(view_func))(wrapped_view)</pre></li>
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>                newretval = post_callback(retval)</pre></li>
+                  
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>                if newretval is not None:</pre></li>
+                  
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>                    retval = newretval</pre></li>
+                  
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre>        return retval</pre></li>
+                  
+                  <li onclick="toggle('pre139963387407176', 'post139963387407176')"><pre></pre></li>
                   
               </ol>
               
@@ -369,10 +372,10 @@
           
             <div class="commands">
                 
-                    <a href="#" onclick="return varToggle(this, '140699215747264')"><span>&#x25b6;</span> Local vars</a>
+                    <a href="#" onclick="return varToggle(this, '139963387407176')"><span>&#x25b6;</span> Local vars</a>
                 
             </div>
-            <table class="vars" id="v140699215747264">
+            <table class="vars" id="v139963387407176">
               <thead>
                 <tr>
                   <th>Variable</th>
@@ -382,18 +385,13 @@
               <tbody>
                 
                   <tr>
-                    <td>args</td>
-                    <td class="code"><pre>(&lt;WSGIRequest: POST &#39;/upload/&#39;&gt;,)</pre></td>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;rest_framework.response.Response object at 0x7f4bc3fc7350&gt;</pre></td>
                   </tr>
                 
                   <tr>
-                    <td>view_func</td>
-                    <td class="code"><pre>&lt;function Upload at 0x7ff716c591b8&gt;</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>kwargs</td>
-                    <td class="code"><pre>{}</pre></td>
+                    <td>retval</td>
+                    <td class="code"><pre>&lt;rest_framework.response.Response object at 0x7f4bc3fc7350&gt;</pre></td>
                   </tr>
                 
               </tbody>
@@ -401,47 +399,47 @@
           
         </li>
       
-        <li class="frame django">
-          <code>/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/django/views/generic/base.py</code> in <code>view</code>
+        <li class="frame user">
+          <code>/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/rest_framework/response.py</code> in <code>rendered_content</code>
 
           
-            <div class="context" id="c140699215747480">
+            <div class="context" id="c139963387404944">
               
-                <ol start="64" class="pre-context" id="pre140699215747480">
+                <ol start="64" class="pre-context" id="pre139963387404944">
                 
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>        def view(request, *args, **kwargs):</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre></pre></li>
                 
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>            self = cls(**initkwargs)</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>        if content_type is None and charset is not None:</pre></li>
                 
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>            if hasattr(self, &#39;get&#39;) and not hasattr(self, &#39;head&#39;):</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>            content_type = &quot;{0}; charset={1}&quot;.format(media_type, charset)</pre></li>
                 
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>                self.head = self.get</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>        elif content_type is None:</pre></li>
                 
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>            self.request = request</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>            content_type = media_type</pre></li>
                 
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>            self.args = args</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>        self[&#39;Content-Type&#39;] = content_type</pre></li>
                 
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>            self.kwargs = kwargs</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre></pre></li>
                 
                 </ol>
               
               <ol start="71" class="context-line">
-                <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>
-                        return self.dispatch(request, *args, **kwargs)</pre> <span>...</span></li></ol>
+                <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>
+                    ret = renderer.render(self.data, media_type, context)</pre> <span>...</span></li></ol>
               
-                <ol start='72' class="post-context" id="post140699215747480">
+                <ol start='72' class="post-context" id="post139963387404944">
                   
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>        if isinstance(ret, six.text_type):</pre></li>
                   
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>        # take name and docstring from class</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>            assert charset, (</pre></li>
                   
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>        update_wrapper(view, cls, updated=())</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>                &#39;renderer returned unicode, and did not specify &#39;</pre></li>
                   
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>                &#39;a charset value.&#39;</pre></li>
                   
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>        # and possible attributes set by decorators</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>            )</pre></li>
                   
-                  <li onclick="toggle('pre140699215747480', 'post140699215747480')"><pre>        # like csrf_exempt from dispatch</pre></li>
+                  <li onclick="toggle('pre139963387404944', 'post139963387404944')"><pre>            return bytes(ret.encode(charset))</pre></li>
                   
               </ol>
               
@@ -451,10 +449,10 @@
           
             <div class="commands">
                 
-                    <a href="#" onclick="return varToggle(this, '140699215747480')"><span>&#x25b6;</span> Local vars</a>
+                    <a href="#" onclick="return varToggle(this, '139963387404944')"><span>&#x25b6;</span> Local vars</a>
                 
             </div>
-            <table class="vars" id="v140699215747480">
+            <table class="vars" id="v139963387404944">
               <thead>
                 <tr>
                   <th>Variable</th>
@@ -464,33 +462,269 @@
               <tbody>
                 
                   <tr>
-                    <td>initkwargs</td>
-                    <td class="code"><pre>{}</pre></td>
+                    <td>content_type</td>
+                    <td class="code"><pre>u&#39;application/json&#39;</pre></td>
                   </tr>
                 
                   <tr>
                     <td>self</td>
-                    <td class="code"><pre>&lt;autenticazione.views.Upload object at 0x7ff716c5e9d0&gt;</pre></td>
+                    <td class="code"><pre>&lt;rest_framework.response.Response object at 0x7f4bc3fc7350&gt;</pre></td>
                   </tr>
                 
                   <tr>
-                    <td>args</td>
-                    <td class="code"><pre>()</pre></td>
+                    <td>charset</td>
+                    <td class="code"><pre>None</pre></td>
                   </tr>
                 
                   <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&quot;&lt;WSGIRequest\npath:/upload/,\nGET:&lt;QueryDict: {}&gt;,\nPOST:&lt;could not parse&gt;,\nCOOKIES:{},\nMETA:{&#39;CONTENT_LENGTH&#39;: &#39;85&#39;,\n &#39;CONTENT_TYPE&#39;: &#39;application/json&#39;,\n u&#39;CSRF_COOKIE&#39;: u&#39;YD6TLwoCp0IA0GtOjndARXSG6ah0Ei9R&#39;,\n &#39;DOCUMENT_ROOT&#39;: &#39;/usr/local/openresty/nginx/html&#39;,\n &#39;HTTP_ACCEPT&#39;: &#39;*/*&#39;,\n &#39;HTTP_CONNECTION&#39;: &#39;close&#39;,\n &#39;HTTP_CONTENT_LENGTH&#39;: &#39;85&#39;,\n &#39;HTTP_CONTENT_TYPE&#39;: &#39;application/json&#39;,\n &#39;HTTP_HOST&#39;: &#39;giacomoalbe.pythonanywhere.com&#39;,\n &#39;HTTP_USER_AGENT&#39;: &#39;curl/7.37.1&#39;,\n &#39;HTTP_X_FORWARDED_FOR&#39;: &#39;193.205.210.42&#39;,\n &#39;HTTP_X_REAL_IP&#39;: &#39;193.205.210.42&#39;,\n &#39;PATH_INFO&#39;: u&#39;/upload/&#39;,\n &#39;QUERY_STRING&#39;: &#39;&#39;,\n &#39;REMOTE_ADDR&#39;: &#39;10.81.168.55&#39;,\n &#39;REMOTE_PORT&#39;: &#39;49625&#39;,\n &#39;REQUEST_METHOD&#39;: &#39;POST&#39;,\n &#39;REQUEST_URI&#39;: &#39;/upload/&#39;,\n &#39;SCRIPT_NAME&#39;: u&#39;&#39;,\n &#39;SERVER_NAME&#39;: &#39;giacomoalbe.pythonanywhere.com&#39;,\n &#39;SERVER_PORT&#39;: &#39;80&#39;,\n &#39;SERVER_PROTOCOL&#39;: &#39;HTTP/1.1&#39;,\n &#39;uwsgi.node&#39;: &#39;giles-liveweb1&#39;,\n &#39;uwsgi.version&#39;: &#39;2.0.5.1&#39;,\n &#39;wsgi.errors&#39;: &lt;uwsgi_file__bin_user_wsgi_wrapper.ErrorLogFile object at 0x7ff716fba5d0&gt;,\n &#39;wsgi.file_wrapper&#39;: &lt;built-in function uwsgi_sendfile&gt;,\n &#39;wsgi.input&#39;: &lt;uwsgi._Input object at 0x7ff716ac6d68&gt;,\n &#39;wsgi.multiprocess&#39;: False,\n &#39;wsgi.multithread&#39;: False,\n &#39;wsgi.run_once&#39;: False,\n &#39;wsgi.url_scheme&#39;: &#39;http&#39;,\n &#39;wsgi.version&#39;: (1, 0)}&gt;&quot;</pre></td>
+                    <td>renderer</td>
+                    <td class="code"><pre>&lt;rest_framework.renderers.JSONRenderer object at 0x7f4bc3fc7d50&gt;</pre></td>
                   </tr>
                 
                   <tr>
-                    <td>kwargs</td>
+                    <td>context</td>
+                    <td class="code"><pre>{u&#39;args&#39;: (),
+ u&#39;kwargs&#39;: {},
+ u&#39;request&#39;: &lt;rest_framework.request.Request object at 0x7f4bc3fc7c90&gt;,
+ u&#39;response&#39;: &lt;rest_framework.response.Response object at 0x7f4bc3fc7350&gt;,
+ u&#39;view&#39;: &lt;autenticazione.views.Upload object at 0x7f4bc3fc79d0&gt;}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>media_type</td>
+                    <td class="code"><pre>u&#39;application/json&#39;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        <li class="frame user">
+          <code>/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/rest_framework/renderers.py</code> in <code>render</code>
+
+          
+            <div class="context" id="c139963387406528">
+              
+                <ol start="96" class="pre-context" id="pre139963387406528">
+                
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>            separators = SHORT_SEPARATORS if self.compact else LONG_SEPARATORS</pre></li>
+                
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>        else:</pre></li>
+                
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>            separators = INDENT_SEPARATORS</pre></li>
+                
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>        ret = json.dumps(</pre></li>
+                
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>            data, cls=self.encoder_class,</pre></li>
+                
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>            indent=indent, ensure_ascii=self.ensure_ascii,</pre></li>
+                
+                </ol>
+              
+              <ol start="103" class="context-line">
+                <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>
+                        separators=separators</pre> <span>...</span></li></ol>
+              
+                <ol start='104' class="post-context" id="post139963387406528">
+                  
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>        )</pre></li>
+                  
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>        # On python 2.x json.dumps() returns bytestrings if ensure_ascii=True,</pre></li>
+                  
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>        # but if ensure_ascii=False, the return type is underspecified,</pre></li>
+                  
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>        # and may (or may not) be unicode.</pre></li>
+                  
+                  <li onclick="toggle('pre139963387406528', 'post139963387406528')"><pre>        # On python 3.x json.dumps() returns unicode strings.</pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '139963387406528')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v139963387406528">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>indent</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>accepted_media_type</td>
+                    <td class="code"><pre>u&#39;application/json&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>renderer_context</td>
+                    <td class="code"><pre>{u&#39;args&#39;: (),
+ u&#39;kwargs&#39;: {},
+ u&#39;request&#39;: &lt;rest_framework.request.Request object at 0x7f4bc3fc7c90&gt;,
+ u&#39;response&#39;: &lt;rest_framework.response.Response object at 0x7f4bc3fc7350&gt;,
+ u&#39;view&#39;: &lt;autenticazione.views.Upload object at 0x7f4bc3fc79d0&gt;}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;rest_framework.renderers.JSONRenderer object at 0x7f4bc3fc7d50&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>separators</td>
+                    <td class="code"><pre>(&#39;,&#39;, &#39;:&#39;)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>data</td>
+                    <td class="code"><pre>{&#39;error&#39;: {&#39;args&#39;: [&#39;Incorrect padding&#39;],
+           &#39;message&#39;: &#39;Incorrect padding&#39;,
+           &#39;type&#39;: &lt;class &#39;binascii.Error&#39;&gt;}}</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        <li class="frame user">
+          <code>/usr/lib/python2.7/json/__init__.py</code> in <code>dumps</code>
+
+          
+            <div class="context" id="c139963387407032">
+              
+                <ol start="243" class="pre-context" id="pre139963387407032">
+                
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre>        return _default_encoder.encode(obj)</pre></li>
+                
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre>    if cls is None:</pre></li>
+                
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre>        cls = JSONEncoder</pre></li>
+                
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre>    return cls(</pre></li>
+                
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre>        skipkeys=skipkeys, ensure_ascii=ensure_ascii,</pre></li>
+                
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre>        check_circular=check_circular, allow_nan=allow_nan, indent=indent,</pre></li>
+                
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre>        separators=separators, encoding=encoding, default=default,</pre></li>
+                
+                </ol>
+              
+              <ol start="250" class="context-line">
+                <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre>
+                    sort_keys=sort_keys, **kw).encode(obj)</pre> <span>...</span></li></ol>
+              
+                <ol start='251' class="post-context" id="post139963387407032">
+                  
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre>_default_decoder = JSONDecoder(encoding=None, object_hook=None,</pre></li>
+                  
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre>                               object_pairs_hook=None)</pre></li>
+                  
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre></pre></li>
+                  
+                  <li onclick="toggle('pre139963387407032', 'post139963387407032')"><pre></pre></li>
+                  
+              </ol>
+              
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '139963387407032')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v139963387407032">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>indent</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>encoding</td>
+                    <td class="code"><pre>&#39;utf-8&#39;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>default</td>
+                    <td class="code"><pre>None</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>separators</td>
+                    <td class="code"><pre>(&#39;,&#39;, &#39;:&#39;)</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>kw</td>
                     <td class="code"><pre>{}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>skipkeys</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>allow_nan</td>
+                    <td class="code"><pre>True</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>obj</td>
+                    <td class="code"><pre>{&#39;error&#39;: {&#39;args&#39;: [&#39;Incorrect padding&#39;],
+           &#39;message&#39;: &#39;Incorrect padding&#39;,
+           &#39;type&#39;: &lt;class &#39;binascii.Error&#39;&gt;}}</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>sort_keys</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>ensure_ascii</td>
+                    <td class="code"><pre>False</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>check_circular</td>
+                    <td class="code"><pre>True</pre></td>
                   </tr>
                 
                   <tr>
                     <td>cls</td>
-                    <td class="code"><pre>&lt;class &#39;autenticazione.views.Upload&#39;&gt;</pre></td>
+                    <td class="code"><pre>&lt;class &#39;rest_framework.utils.encoders.JSONEncoder&#39;&gt;</pre></td>
                   </tr>
                 
               </tbody>
@@ -499,46 +733,46 @@
         </li>
       
         <li class="frame user">
-          <code>/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/rest_framework/views.py</code> in <code>dispatch</code>
+          <code>/usr/lib/python2.7/json/encoder.py</code> in <code>encode</code>
 
           
-            <div class="context" id="c140699215747768">
+            <div class="context" id="c139963387407104">
               
-                <ol start="459" class="pre-context" id="pre140699215747768">
+                <ol start="200" class="pre-context" id="pre139963387407104">
                 
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre>                                  self.http_method_not_allowed)</pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>            if self.ensure_ascii:</pre></li>
                 
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre>            else:</pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>                return encode_basestring_ascii(o)</pre></li>
                 
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre>                handler = self.http_method_not_allowed</pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>            else:</pre></li>
                 
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>                return encode_basestring(o)</pre></li>
                 
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre>            response = handler(request, *args, **kwargs)</pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>        # This doesn&#39;t pass the iterator directly to &#39;&#39;.join() because the</pre></li>
                 
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>        # exceptions aren&#39;t as detailed.  The list call should be roughly</pre></li>
                 
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre>        except Exception as exc:</pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>        # equivalent to the PySequence_Fast that &#39;&#39;.join() would do.</pre></li>
                 
                 </ol>
               
-              <ol start="466" class="context-line">
-                <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre>
-                        response = self.handle_exception(exc)</pre> <span>...</span></li></ol>
+              <ol start="207" class="context-line">
+                <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>
+                    chunks = self.iterencode(o, _one_shot=True)</pre> <span>...</span></li></ol>
               
-                <ol start='467' class="post-context" id="post140699215747768">
+                <ol start='208' class="post-context" id="post139963387407104">
                   
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>        if not isinstance(chunks, (list, tuple)):</pre></li>
                   
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre>        self.response = self.finalize_response(request, response, *args, **kwargs)</pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>            chunks = list(chunks)</pre></li>
                   
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre>        return self.response</pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>        return &#39;&#39;.join(chunks)</pre></li>
                   
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre></pre></li>
                   
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre>    def options(self, request, *args, **kwargs):</pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>    def iterencode(self, o, _one_shot=False):</pre></li>
                   
-                  <li onclick="toggle('pre140699215747768', 'post140699215747768')"><pre>        &quot;&quot;&quot;</pre></li>
+                  <li onclick="toggle('pre139963387407104', 'post139963387407104')"><pre>        &quot;&quot;&quot;Encode the given object and yield each string</pre></li>
                   
               </ol>
               
@@ -548,10 +782,10 @@
           
             <div class="commands">
                 
-                    <a href="#" onclick="return varToggle(this, '140699215747768')"><span>&#x25b6;</span> Local vars</a>
+                    <a href="#" onclick="return varToggle(this, '139963387407104')"><span>&#x25b6;</span> Local vars</a>
                 
             </div>
-            <table class="vars" id="v140699215747768">
+            <table class="vars" id="v139963387407104">
               <thead>
                 <tr>
                   <th>Variable</th>
@@ -561,33 +795,15 @@
               <tbody>
                 
                   <tr>
-                    <td>exc</td>
-                    <td class="code"><pre>NameError(&quot;global name &#39;JSON&#39; is not defined&quot;,)</pre></td>
-                  </tr>
-                
-                  <tr>
                     <td>self</td>
-                    <td class="code"><pre>&lt;autenticazione.views.Upload object at 0x7ff716c5e9d0&gt;</pre></td>
+                    <td class="code"><pre>&lt;rest_framework.utils.encoders.JSONEncoder object at 0x7f4bc3fc7f50&gt;</pre></td>
                   </tr>
                 
                   <tr>
-                    <td>args</td>
-                    <td class="code"><pre>()</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&lt;rest_framework.request.Request object at 0x7ff716c5ec90&gt;</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>handler</td>
-                    <td class="code"><pre>&lt;bound method Upload.post of &lt;autenticazione.views.Upload object at 0x7ff716c5e9d0&gt;&gt;</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>kwargs</td>
-                    <td class="code"><pre>{}</pre></td>
+                    <td>o</td>
+                    <td class="code"><pre>{&#39;error&#39;: {&#39;args&#39;: [&#39;Incorrect padding&#39;],
+           &#39;message&#39;: &#39;Incorrect padding&#39;,
+           &#39;type&#39;: &lt;class &#39;binascii.Error&#39;&gt;}}</pre></td>
                   </tr>
                 
               </tbody>
@@ -596,46 +812,46 @@
         </li>
       
         <li class="frame user">
-          <code>/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/rest_framework/views.py</code> in <code>dispatch</code>
+          <code>/usr/lib/python2.7/json/encoder.py</code> in <code>iterencode</code>
 
           
-            <div class="context" id="c140699211978656">
+            <div class="context" id="c139963383637920">
               
-                <ol start="456" class="pre-context" id="pre140699211978656">
+                <ol start="263" class="pre-context" id="pre139963383637920">
                 
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>            # Get the appropriate handler method</pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>                self.key_separator, self.item_separator, self.sort_keys,</pre></li>
                 
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>            if request.method.lower() in self.http_method_names:</pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>                self.skipkeys, self.allow_nan)</pre></li>
                 
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>                handler = getattr(self, request.method.lower(),</pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>        else:</pre></li>
                 
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>                                  self.http_method_not_allowed)</pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>            _iterencode = _make_iterencode(</pre></li>
                 
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>            else:</pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>                markers, self.default, _encoder, self.indent, floatstr,</pre></li>
                 
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>                handler = self.http_method_not_allowed</pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>                self.key_separator, self.item_separator, self.sort_keys,</pre></li>
                 
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre></pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>                self.skipkeys, _one_shot)</pre></li>
                 
                 </ol>
               
-              <ol start="463" class="context-line">
-                <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>
-                        response = handler(request, *args, **kwargs)</pre> <span>...</span></li></ol>
+              <ol start="270" class="context-line">
+                <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>
+                    return _iterencode(o, 0)</pre> <span>...</span></li></ol>
               
-                <ol start='464' class="post-context" id="post140699211978656">
+                <ol start='271' class="post-context" id="post139963383637920">
                   
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre></pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre></pre></li>
                   
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>        except Exception as exc:</pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>def _make_iterencode(markers, _default, _encoder, _indent, _floatstr,</pre></li>
                   
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>            response = self.handle_exception(exc)</pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>        _key_separator, _item_separator, _sort_keys, _skipkeys, _one_shot,</pre></li>
                   
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre></pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>        ## HACK: hand-optimized bytecode; turn globals into locals</pre></li>
                   
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>        self.response = self.finalize_response(request, response, *args, **kwargs)</pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>        ValueError=ValueError,</pre></li>
                   
-                  <li onclick="toggle('pre140699211978656', 'post140699211978656')"><pre>        return self.response</pre></li>
+                  <li onclick="toggle('pre139963383637920', 'post139963383637920')"><pre>        basestring=basestring,</pre></li>
                   
               </ol>
               
@@ -645,10 +861,10 @@
           
             <div class="commands">
                 
-                    <a href="#" onclick="return varToggle(this, '140699211978656')"><span>&#x25b6;</span> Local vars</a>
+                    <a href="#" onclick="return varToggle(this, '139963383637920')"><span>&#x25b6;</span> Local vars</a>
                 
             </div>
-            <table class="vars" id="v140699211978656">
+            <table class="vars" id="v139963383637920">
               <thead>
                 <tr>
                   <th>Variable</th>
@@ -658,33 +874,46 @@
               <tbody>
                 
                   <tr>
-                    <td>exc</td>
-                    <td class="code"><pre>NameError(&quot;global name &#39;JSON&#39; is not defined&quot;,)</pre></td>
+                    <td>_encoder</td>
+                    <td class="code"><pre>&lt;function encode_basestring at 0x7f4bc9a59d70&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>floatstr</td>
+                    <td class="code"><pre>&lt;function floatstr at 0x7f4bc3ffe398&gt;</pre></td>
                   </tr>
                 
                   <tr>
                     <td>self</td>
-                    <td class="code"><pre>&lt;autenticazione.views.Upload object at 0x7ff716c5e9d0&gt;</pre></td>
+                    <td class="code"><pre>&lt;rest_framework.utils.encoders.JSONEncoder object at 0x7f4bc3fc7f50&gt;</pre></td>
                   </tr>
                 
                   <tr>
-                    <td>args</td>
-                    <td class="code"><pre>()</pre></td>
+                    <td>markers</td>
+                    <td class="code"><pre>{37087056: &lt;class &#39;binascii.Error&#39;&gt;,
+ 139963387430064: {&#39;error&#39;: {&#39;args&#39;: [&#39;Incorrect padding&#39;],
+                             &#39;message&#39;: &#39;Incorrect padding&#39;,
+                             &#39;type&#39;: &lt;class &#39;binascii.Error&#39;&gt;}},
+ 139963387440776: {&#39;args&#39;: [&#39;Incorrect padding&#39;],
+                   &#39;message&#39;: &#39;Incorrect padding&#39;,
+                   &#39;type&#39;: &lt;class &#39;binascii.Error&#39;&gt;}}</pre></td>
                   </tr>
                 
                   <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&lt;rest_framework.request.Request object at 0x7ff716c5ec90&gt;</pre></td>
+                    <td>_one_shot</td>
+                    <td class="code"><pre>True</pre></td>
                   </tr>
                 
                   <tr>
-                    <td>handler</td>
-                    <td class="code"><pre>&lt;bound method Upload.post of &lt;autenticazione.views.Upload object at 0x7ff716c5e9d0&gt;&gt;</pre></td>
+                    <td>o</td>
+                    <td class="code"><pre>{&#39;error&#39;: {&#39;args&#39;: [&#39;Incorrect padding&#39;],
+           &#39;message&#39;: &#39;Incorrect padding&#39;,
+           &#39;type&#39;: &lt;class &#39;binascii.Error&#39;&gt;}}</pre></td>
                   </tr>
                 
                   <tr>
-                    <td>kwargs</td>
-                    <td class="code"><pre>{}</pre></td>
+                    <td>_iterencode</td>
+                    <td class="code"><pre>&lt;_json.Encoder object at 0x7f4bc3ffe410&gt;</pre></td>
                   </tr>
                 
               </tbody>
@@ -693,46 +922,107 @@
         </li>
       
         <li class="frame user">
-          <code>/home/giacomoalbe/PlaceStampBackend/autenticazione/views.py</code> in <code>post</code>
+          <code>/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/rest_framework/utils/encoders.py</code> in <code>default</code>
 
           
-            <div class="context" id="c140699215747984">
+            <div class="context" id="c139963387406744">
               
-                <ol start="358" class="pre-context" id="pre140699215747984">
+                <ol start="57" class="pre-context" id="pre139963387406744">
                 
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387406744', 'post139963387406744')"><pre>        elif hasattr(obj, &#39;__getitem__&#39;):</pre></li>
                 
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre>			errors = {</pre></li>
+                  <li onclick="toggle('pre139963387406744', 'post139963387406744')"><pre>            try:</pre></li>
                 
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre>				&#39;type&#39;: type(e),</pre></li>
+                  <li onclick="toggle('pre139963387406744', 'post139963387406744')"><pre>                return dict(obj)</pre></li>
                 
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre>				&#39;args&#39;: list(e.args),</pre></li>
+                  <li onclick="toggle('pre139963387406744', 'post139963387406744')"><pre>            except:</pre></li>
                 
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre>				&#39;message&#39; : str(e)</pre></li>
+                  <li onclick="toggle('pre139963387406744', 'post139963387406744')"><pre>                pass</pre></li>
                 
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre>			}</pre></li>
+                  <li onclick="toggle('pre139963387406744', 'post139963387406744')"><pre>        elif hasattr(obj, &#39;__iter__&#39;):</pre></li>
                 
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387406744', 'post139963387406744')"><pre>            return tuple(item for item in obj)</pre></li>
                 
                 </ol>
               
-              <ol start="365" class="context-line">
-                <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre>
-            			return Response({&#39;error&#39;: JSON.stringify(errors)}, status=status.HTTP_400_BAD_REQUEST)</pre> <span>...</span></li></ol>
+              <ol start="64" class="context-line">
+                <li onclick="toggle('pre139963387406744', 'post139963387406744')"><pre>
+                    return super(JSONEncoder, self).default(obj)</pre> <span>...</span></li></ol>
               
-                <ol start='366' class="post-context" id="post140699215747984">
+            </div>
+          
+
+          
+            <div class="commands">
+                
+                    <a href="#" onclick="return varToggle(this, '139963387406744')"><span>&#x25b6;</span> Local vars</a>
+                
+            </div>
+            <table class="vars" id="v139963387406744">
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>self</td>
+                    <td class="code"><pre>&lt;rest_framework.utils.encoders.JSONEncoder object at 0x7f4bc3fc7f50&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>obj</td>
+                    <td class="code"><pre>&lt;class &#39;binascii.Error&#39;&gt;</pre></td>
+                  </tr>
+                
+              </tbody>
+            </table>
+          
+        </li>
+      
+        <li class="frame user">
+          <code>/usr/lib/python2.7/json/encoder.py</code> in <code>default</code>
+
+          
+            <div class="context" id="c139963387407248">
+              
+                <ol start="177" class="pre-context" id="pre139963387407248">
+                
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>                    pass</pre></li>
+                
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>                else:</pre></li>
+                
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>                    return list(iterable)</pre></li>
+                
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>                # Let the base class default method raise the TypeError</pre></li>
+                
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>                return JSONEncoder.default(self, o)</pre></li>
+                
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre></pre></li>
+                
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>        &quot;&quot;&quot;</pre></li>
+                
+                </ol>
+              
+              <ol start="184" class="context-line">
+                <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>
+                    raise TypeError(repr(o) + &quot; is not JSON serializable&quot;)</pre> <span>...</span></li></ol>
+              
+                <ol start='185' class="post-context" id="post139963387407248">
                   
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre></pre></li>
                   
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre>def show_photos(request):</pre></li>
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>    def encode(self, o):</pre></li>
                   
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>        &quot;&quot;&quot;Return a JSON string representation of a Python data structure.</pre></li>
                   
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre>	# mostriamo una lista delle foto che sono state uppate</pre></li>
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre></pre></li>
                   
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre></pre></li>
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>        &gt;&gt;&gt; JSONEncoder().encode({&quot;foo&quot;: [&quot;bar&quot;, &quot;baz&quot;]})</pre></li>
                   
-                  <li onclick="toggle('pre140699215747984', 'post140699215747984')"><pre>	fotoDict = Foto.objects.all()</pre></li>
+                  <li onclick="toggle('pre139963387407248', 'post139963387407248')"><pre>        &#39;{&quot;foo&quot;: [&quot;bar&quot;, &quot;baz&quot;]}&#39;</pre></li>
                   
               </ol>
               
@@ -742,10 +1032,10 @@
           
             <div class="commands">
                 
-                    <a href="#" onclick="return varToggle(this, '140699215747984')"><span>&#x25b6;</span> Local vars</a>
+                    <a href="#" onclick="return varToggle(this, '139963387407248')"><span>&#x25b6;</span> Local vars</a>
                 
             </div>
-            <table class="vars" id="v140699215747984">
+            <table class="vars" id="v139963387407248">
               <thead>
                 <tr>
                   <th>Variable</th>
@@ -755,50 +1045,13 @@
               <tbody>
                 
                   <tr>
-                    <td>errors</td>
-                    <td class="code"><pre>{&#39;args&#39;: [&#39;Incorrect padding&#39;],
- &#39;message&#39;: &#39;Incorrect padding&#39;,
- &#39;type&#39;: &lt;class &#39;binascii.Error&#39;&gt;}</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>e</td>
-                    <td class="code"><pre>Error(&#39;Incorrect padding&#39;,)</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>image</td>
-                    <td class="code"><pre>u&#39;image&#39;</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>request</td>
-                    <td class="code"><pre>&lt;rest_framework.request.Request object at 0x7ff716c5ec90&gt;</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>nomefile</td>
-                    <td class="code"><pre>u&#39;wer&#39;</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>longitude</td>
-                    <td class="code"><pre>u&#39;12.3&#39;</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>compass</td>
-                    <td class="code"><pre>u&#39;12&#39;</pre></td>
-                  </tr>
-                
-                  <tr>
-                    <td>latitude</td>
-                    <td class="code"><pre>u&#39;34.3&#39;</pre></td>
-                  </tr>
-                
-                  <tr>
                     <td>self</td>
-                    <td class="code"><pre>&lt;autenticazione.views.Upload object at 0x7ff716c5e9d0&gt;</pre></td>
+                    <td class="code"><pre>&lt;rest_framework.utils.encoders.JSONEncoder object at 0x7f4bc3fc7f50&gt;</pre></td>
+                  </tr>
+                
+                  <tr>
+                    <td>o</td>
+                    <td class="code"><pre>&lt;class &#39;binascii.Error&#39;&gt;</pre></td>
                   </tr>
                 
               </tbody>
@@ -814,7 +1067,7 @@
   <div id="pastebinTraceback" class="pastebin">
     <input type="hidden" name="language" value="PythonConsole">
     <input type="hidden" name="title"
-      value="NameError at /upload/">
+      value="TypeError at /upload/">
     <input type="hidden" name="source" value="Django Dpaste Agent">
     <input type="hidden" name="poster" value="Django">
     <textarea name="content" id="traceback_area" cols="140" rows="25">
@@ -847,20 +1100,26 @@ Installed Middleware:
 
 Traceback:
 File "/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/django/core/handlers/base.py" in get_response
-  132.                     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-File "/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/django/views/decorators/csrf.py" in wrapped_view
-  58.         return view_func(*args, **kwargs)
-File "/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/django/views/generic/base.py" in view
-  71.             return self.dispatch(request, *args, **kwargs)
-File "/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/rest_framework/views.py" in dispatch
-  466.             response = self.handle_exception(exc)
-File "/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/rest_framework/views.py" in dispatch
-  463.             response = handler(request, *args, **kwargs)
-File "/home/giacomoalbe/PlaceStampBackend/autenticazione/views.py" in post
-  365. 			return Response({&#39;error&#39;: JSON.stringify(errors)}, status=status.HTTP_400_BAD_REQUEST)
+  164.                 response = response.render()
+File "/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/django/template/response.py" in render
+  158.             self.content = self.rendered_content
+File "/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/rest_framework/response.py" in rendered_content
+  71.         ret = renderer.render(self.data, media_type, context)
+File "/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/rest_framework/renderers.py" in render
+  103.             separators=separators
+File "/usr/lib/python2.7/json/__init__.py" in dumps
+  250.         sort_keys=sort_keys, **kw).encode(obj)
+File "/usr/lib/python2.7/json/encoder.py" in encode
+  207.         chunks = self.iterencode(o, _one_shot=True)
+File "/usr/lib/python2.7/json/encoder.py" in iterencode
+  270.         return _iterencode(o, 0)
+File "/home/giacomoalbe/PlaceStampBackend/myenv/local/lib/python2.7/site-packages/rest_framework/utils/encoders.py" in default
+  64.         return super(JSONEncoder, self).default(obj)
+File "/usr/lib/python2.7/json/encoder.py" in default
+  184.         raise TypeError(repr(o) + &quot; is not JSON serializable&quot;)
 
-Exception Type: NameError at /upload/
-Exception Value: global name &#39;JSON&#39; is not defined
+Exception Type: TypeError at /upload/
+Exception Value: &lt;class &#39;binascii.Error&#39;&gt; is not JSON serializable
 </textarea>
   <br><br>
   <input type="submit" value="Share this traceback on a public Web site">
@@ -996,7 +1255,7 @@ Exception Value: global name &#39;JSON&#39; is not defined
       
         <tr>
           <td>wsgi.input</td>
-          <td class="code"><pre>&lt;uwsgi._Input object at 0x7ff716ac6d68&gt;</pre></td>
+          <td class="code"><pre>&lt;uwsgi._Input object at 0x7f4bc3e30d68&gt;</pre></td>
         </tr>
       
         <tr>
@@ -1036,12 +1295,12 @@ Exception Value: global name &#39;JSON&#39; is not defined
       
         <tr>
           <td>wsgi.errors</td>
-          <td class="code"><pre>&lt;uwsgi_file__bin_user_wsgi_wrapper.ErrorLogFile object at 0x7ff716fba5d0&gt;</pre></td>
+          <td class="code"><pre>&lt;uwsgi_file__bin_user_wsgi_wrapper.ErrorLogFile object at 0x7f4bc83405d0&gt;</pre></td>
         </tr>
       
         <tr>
           <td>REMOTE_PORT</td>
-          <td class="code"><pre>&#39;49625&#39;</pre></td>
+          <td class="code"><pre>&#39;52733&#39;</pre></td>
         </tr>
       
         <tr>
@@ -1061,7 +1320,7 @@ Exception Value: global name &#39;JSON&#39; is not defined
       
         <tr>
           <td>CSRF_COOKIE</td>
-          <td class="code"><pre>u&#39;YD6TLwoCp0IA0GtOjndARXSG6ah0Ei9R&#39;</pre></td>
+          <td class="code"><pre>u&#39;wwIHCLUp5W7B0PXkQAzz05rng04ZdDth&#39;</pre></td>
         </tr>
       
     </tbody>
