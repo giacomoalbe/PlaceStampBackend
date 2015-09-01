@@ -315,43 +315,49 @@ class Upload(views.APIView):
 
 	def post(self, request):
 
-		# Qui ci aspettiamo una request contentente:
-		# image, compass, longitude e latitude (e user a breve TODO)
-		image = request.data.get('image', None)
-		compass = request.data.get('compass', -1)
-		longitude = request.data.get('long', -1)
-		latitude = request.data.get('lat', -1)
-		nomefile = request.data.get('nomefile', None)
+		try:
+			# Qui ci aspettiamo una request contentente:
+			# image, compass, longitude e latitude (e user a breve TODO)
+			image = request.data.get('image', None)
+			compass = request.data.get('compass', -1)
+			longitude = request.data.get('long', -1)
+			latitude = request.data.get('lat', -1)
+			nomefile = request.data.get('nomefile', None)
 
-		# Salvo il file in locale
-		if image:
+			# Salvo il file in locale
+			if image:
 
-			image = image.decode('base64')
+				image = image.decode('base64')
 
-			# TODO: PATH Assoluto usando variabili d'ambiente!
-			if nomefile:
-				nomefile = nomefile + ".jpg"
-			else:
-				nomefile = "upload.jpg"
+				# TODO: PATH Assoluto usando variabili d'ambiente!
+				if nomefile:
+					nomefile = nomefile + ".jpg"
+				else:
+					nomefile = "upload.jpg"
 
-			path = "autenticazione/static/" + nomefile
+				path = "autenticazione/static/" + nomefile
 
-			fh = open(path, 'wb')
-			fh.write(image)
+				fh = open(path, 'wb')
+				fh.write(image)
 
-			if compass:
-				compass = int(compass)
+				if compass:
+					compass = int(compass)
 
-			# Salviamo una nuova istanza di Foto
-			newFoto = Foto.objects.create(image=nomefile, compass=compass, latitude=latitude, longitude=longitude)
-			newFotoSerial = FotoSerializer(newFoto, allow_null=True)
+				# Salviamo una nuova istanza di Foto
+				newFoto = Foto.objects.create(image=nomefile, compass=compass, latitude=latitude, longitude=longitude)
+				newFotoSerial = FotoSerializer(newFoto, allow_null=True)
 
-			if newFotoSerial.is_valid():
-				return Response({'foto': newFotoSerial.data, 'status': 'OK'}, status=status.HTTP_201_CREATED)
-			else: 
-				return Response({"error": "Foto con campi non validi!"}, status=status.HTTP_400_BAD_REQUEST)
-			
-		return Response({'status': "Immagine non pervenuta"}, status=status.HTTP_400_BAD_REQUEST)
+				if newFotoSerial.is_valid():
+					return Response({'foto': newFotoSerial.data, 'status': 'OK'}, status=status.HTTP_201_CREATED)
+				else: 
+					return Response({"error": "Foto con campi non validi!"}, status=status.HTTP_400_BAD_REQUEST)
+				
+			return Response({'status': "Immagine non pervenuta"}, status=status.HTTP_400_BAD_REQUEST)
+		except:
+
+			error = str(sys.exc_info()[0])
+
+			return Response({'error': error }, status=status.HTTP_400_BAD_REQUEST)
 
 def show_photos(request):
 
