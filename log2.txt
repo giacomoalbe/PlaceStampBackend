@@ -1,1 +1,1 @@
-{"error":"Foto con campi non validi!"}
+{"error":{"message":"global name 'newPostSerial' is not defined","args":["global name 'newPostSerial' is not defined"],"type":"<type 'exceptions.NameError'>"}}
