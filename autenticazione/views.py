@@ -1,6 +1,8 @@
 from django.shortcuts import render, render_to_response
 from django.views.generic import View
 
+import os
+
 #from django.db import *
 
 from rest_framework import status, generics, permissions, views
@@ -332,16 +334,16 @@ class Upload(views.APIView):
 				except:
 					# L'immagine non e in base 64!
 					pass
-				
+
 				# TODO: PATH Assoluto usando variabili d'ambiente!
 				if nomefile:
 					nomefile = nomefile + ".jpg"
 				else:
 					nomefile = "upload.jpg"
 
-				path = "autenticazione/static/" + nomefile
+				path = os.path.dirname(os.path.abspath(__file__)) + "/static/"+ nomefile
 
-				fh = open(path, 'wb')
+				fh = open(path, 'wb+')
 				fh.write(image)
 
 				if compass:
