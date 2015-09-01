@@ -13,7 +13,8 @@ urlpatterns = [
 	url(r'^owners/$', views.OwnerList.as_view()),
 	url(r'^cars/$', views.CarsList.as_view()),
 	url(r'^cars/(?P<pk>[0-9]+)/$', views.CarDetail.as_view()),
-	url(r'^upload/$', views.Upload.as_view())
+	url(r'^upload/$', views.Upload.as_view()),
+	url(r'^foto/$', views.show_photos)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

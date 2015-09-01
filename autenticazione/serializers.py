@@ -1,5 +1,5 @@
 from rest_framework import serializers 
-from autenticazione.models import PSUser, Post, Car, Owner
+from autenticazione.models import PSUser, Post, Car, Owner, Foto
 
 class PSUserSerializer(serializers.ModelSerializer):
 
@@ -78,7 +78,6 @@ class CarSerializer(serializers.ModelSerializer):
 		model = Car
 		fields = ('id', 'owner', 'name', 'marchio')
 
-
 class OwnerSerializer(serializers.BaseSerializer):
 
 		def to_representation(self, owner):
@@ -131,3 +130,8 @@ class OwnerSerializer(serializers.BaseSerializer):
 
 			return Owner.objects.create(**validated_data)
 
+class FotoSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = Foto
+		fields = ('image' , 'compass', 'latitude', 'longitude')

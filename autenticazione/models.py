@@ -110,3 +110,11 @@ class Car(models.Model):
 	name = models.CharField(max_length=40)
 	marchio = models.CharField(max_length=40)
 
+class Foto(models.Model):
+
+	image = models.ImageField(upload_to='photos', max_length = 254)
+	compass = models.IntegerField(blank=True)
+	latitude = models.FloatField(blank=True)
+	longitude = models.FloatField(blank=True)
+
+	created_at = models.DateTimeField(auto_now_add=True)

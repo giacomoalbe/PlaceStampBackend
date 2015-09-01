@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<style>
+			.foto-cont img {
+				max-width: 200px;
+				max-height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Lista delle foto!</h1>
+		{% for pic in foto %}
+			<div class = "foto-cont">
+				<img src = "{% static pic.image %}"/>
+				<p>{{pic.image}}</p>
+				<p>Bussola: {{pic.compass}}</p>
+				<p>Long: {{pic.longitude}}</p>
+				<p>Lat: {{pic.latitude}}</p>
+			</div>
+		{% endfor %}
+	</body>
+</html>
