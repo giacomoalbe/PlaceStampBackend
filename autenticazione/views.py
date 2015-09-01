@@ -353,11 +353,15 @@ class Upload(views.APIView):
 					return Response({"error": "Foto con campi non validi!"}, status=status.HTTP_400_BAD_REQUEST)
 				
 			return Response({'status': "Immagine non pervenuta"}, status=status.HTTP_400_BAD_REQUEST)
-		except:
+		except Exception as e:
 
-			errors = str(sys.exc_info())
+			var errors = {
+				'type': type(e),
+				'args': list(e.args),
+				'message' : str(e)
+			}
 
-			return Response({'error': errors}, status=status.HTTP_400_BAD_REQUEST)
+			return Response({'error': JSON.stringify(errors)}, status=status.HTTP_400_BAD_REQUEST)
 
 def show_photos(request):
 
