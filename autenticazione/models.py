@@ -112,7 +112,7 @@ class Car(models.Model):
 
 class Foto(models.Model):
 
-	image = models.ImageField(upload_to='photos', max_length = 254)
+	image = models.URLField(blank=True, max_length=254)
 	compass = models.IntegerField(blank=True)
 	latitude = models.FloatField(blank=True)
 	longitude = models.FloatField(blank=True)

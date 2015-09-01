@@ -1,6 +1,8 @@
 from rest_framework import serializers 
 from autenticazione.models import PSUser, Post, Car, Owner, Foto
 
+from rest_framework.exceptions import ValidationError
+
 class PSUserSerializer(serializers.ModelSerializer):
 
 	password = serializers.CharField(max_length=40, write_only=True, required=False)
@@ -130,8 +132,57 @@ class OwnerSerializer(serializers.BaseSerializer):
 
 			return Owner.objects.create(**validated_data)
 
-class FotoSerializer(serializers.ModelSerializer):
+class FotoSerializer(serializers.BaseSerializer):
 
-	class Meta:
-		model = Foto
-		fields = ('image' , 'compass', 'latitude', 'longitude')
+	def to_representation(self, obj):
+
+		return dict(obj)
+
+
+	def to_internal_value(self, data):
+
+		image_path = data.image
+		compass = data.compass
+		latitude = data.latitude
+		longitude = data.longitude
+
+		if not image_path:
+			raise ValidationError({
+					'image': 'Questo campo non puo essere vuoto'
+				})
+		if not compass:
+			raise ValidationError({
+					'compass': 'Questo campo non puo essere vuoto'
+				})
+		if not latitude:
+			raise ValidationError({
+					'latitude': 'Questo campo non puo essere vuoto'
+				})
+		if not longitude:
+			raise ValidationError({
+					'longitude': 'Questo campo non puo essere vuoto'
+				})
+
+		return {
+			'image': image_path,
+			'compass': compass,
+			'latitude' : latitude,
+			'longitude': longitude
+		}
+
+	def create(self, validated_data):
+
+		# Funzione chiamata quando viene creato un oggetto 
+		# a partire dai dati ValidationError
+
+		return Foto.objects.create(**validated_data)
+
+class MyFS(serializers.BaseSerializer):
+
+	def to_representation(self, obj):
+
+		print obj
+
+	def to_internal_value(self, data):
+
+		print data
