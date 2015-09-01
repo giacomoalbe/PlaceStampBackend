@@ -362,7 +362,7 @@ class Upload(views.APIView):
 				'message' : str(e)
 			}
 
-			return Response({'error': JSON.stringify(errors)}, status=status.HTTP_400_BAD_REQUEST)
+			return Response({'error': errors}, status=status.HTTP_400_BAD_REQUEST)
 
 def show_photos(request):
 
