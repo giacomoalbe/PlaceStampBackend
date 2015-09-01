@@ -355,9 +355,9 @@ class Upload(views.APIView):
 			return Response({'status': "Immagine non pervenuta"}, status=status.HTTP_400_BAD_REQUEST)
 		except:
 
-			error = str(sys.exc_info()[0])
+			errors = str(sys.exc_info())
 
-			return Response({'error': error }, status=status.HTTP_400_BAD_REQUEST)
+			return Response({'error': errors}, status=status.HTTP_400_BAD_REQUEST)
 
 def show_photos(request):
 
