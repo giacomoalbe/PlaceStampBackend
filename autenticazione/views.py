@@ -327,8 +327,12 @@ class Upload(views.APIView):
 			# Salvo il file in locale
 			if image:
 
-				image = image.decode('base64')
-
+				try:
+					image = image.decode('base64')
+				except:
+					# L'immagine non e in base 64!
+					pass
+				
 				# TODO: PATH Assoluto usando variabili d'ambiente!
 				if nomefile:
 					nomefile = nomefile + ".jpg"
