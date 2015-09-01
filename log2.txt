@@ -1,1 +1,1 @@
-{"error":{"message":"global name 'newPostSerial' is not defined","args":["global name 'newPostSerial' is not defined"],"type":"<type 'exceptions.NameError'>"}}
+{"error":{"message":"'Foto' object has no attribute 'get'","args":["'Foto' object has no attribute 'get'"],"type":"<type 'exceptions.AttributeError'>"}}

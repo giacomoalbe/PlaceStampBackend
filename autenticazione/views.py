@@ -351,7 +351,7 @@ class Upload(views.APIView):
 
 				# Salviamo una nuova istanza di Foto
 				newFoto = Foto.objects.create(image=nomefile, compass=compass, latitude=latitude, longitude=longitude)
-				newFotoSerial = FotoSerializer(data=newFoto, allow_null=True)
+				newFotoSerial = FotoSerializer(newFoto, allow_null=True)
 
 				if newFotoSerial.is_valid():
 					return Response({'foto': newFotoSerial.data, 'status': 'OK'}, status=status.HTTP_201_CREATED)
