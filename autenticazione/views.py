@@ -340,7 +340,7 @@ class Upload(views.APIView):
 
 				# TODO: PATH Assoluto usando variabili d'ambiente!
 				if nomefile:
-					nomefile = nomefile + ".jpg"
+					nomefile = nomefile
 				else:
 					nomefile = "upload.jpg"
 
@@ -359,7 +359,7 @@ class Upload(views.APIView):
 				print newFotoSerial.is_valid()
 
 				if newFotoSerial.is_valid():
-					return Response({'foto': newFotoSerial.data, 'status': 'OK'}, status=status.HTTP_201_CREATED)
+					return Response({'foto': str(newFotoSerial.data), 'status': 'OK'}, status=status.HTTP_201_CREATED)
 				else: 
 					return Response({"error": "Foto con campi non validi!", 'foto': newFotoSerial.data}, status=status.HTTP_400_BAD_REQUEST)
 				
