@@ -3,6 +3,8 @@ from autenticazione.models import PSUser, Post, Car, Owner, Foto
 
 from rest_framework.exceptions import ValidationError
 
+import time, datetime
+
 class PSUserSerializer(serializers.ModelSerializer):
 
 	password = serializers.CharField(max_length=40, write_only=True, required=False)
@@ -145,6 +147,8 @@ class FotoSerializer(serializers.BaseSerializer):
 		compass = data.compass
 		latitude = data.latitude
 		longitude = data.longitude
+		foto_id = data.id
+		created_at = int(time.mktime(data.created_at.timetuple())*1000)
 
 		if not image_path:
 			raise ValidationError({
@@ -167,7 +171,9 @@ class FotoSerializer(serializers.BaseSerializer):
 			'image': image_path,
 			'compass': compass,
 			'latitude' : latitude,
-			'longitude': longitude
+			'longitude': longitude,
+			'id': foto_id,
+			'created_at': created_at
 		}
 
 	def create(self, validated_data):
@@ -175,14 +181,8 @@ class FotoSerializer(serializers.BaseSerializer):
 		# Funzione chiamata quando viene creato un oggetto 
 		# a partire dai dati ValidationError
 
+		# Togliamo l'id o potrebbe dare errori!
+		del validated_data['id']
+		del validated_data['created_at']
+
 		return Foto.objects.create(**validated_data)
-
-class MyFS(serializers.BaseSerializer):
-
-	def to_representation(self, obj):
-
-		print obj
-
-	def to_internal_value(self, data):
-
-		print data
