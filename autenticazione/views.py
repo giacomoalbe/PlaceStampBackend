@@ -359,7 +359,7 @@ class Upload(views.APIView):
 				print newFotoSerial.is_valid()
 
 				if newFotoSerial.is_valid():
-					return Response({'foto': str(newFotoSerial.data), 'status': 'OK'}, status=status.HTTP_201_CREATED)
+					return Response({str(newFotoSerial.data)}, status=status.HTTP_201_CREATED)
 				else: 
 					return Response({"error": "Foto con campi non validi!", 'foto': newFotoSerial.data}, status=status.HTTP_400_BAD_REQUEST)
 				
