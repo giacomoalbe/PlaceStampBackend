@@ -4,6 +4,7 @@ from autenticazione.models import PSUser, Post, Car, Owner, Foto
 from rest_framework.exceptions import ValidationError
 
 import time, datetime
+import json
 
 class PSUserSerializer(serializers.ModelSerializer):
 
@@ -138,7 +139,7 @@ class FotoSerializer(serializers.BaseSerializer):
 
 	def to_representation(self, obj):
 
-		return dict(obj)
+		return obj
 
 
 	def to_internal_value(self, data):
@@ -167,14 +168,14 @@ class FotoSerializer(serializers.BaseSerializer):
 					'longitude': 'Questo campo non puo essere vuoto'
 				})
 
-		return {
+		return json.dumps({
 			'image': image_path,
 			'compass': compass,
 			'latitude' : latitude,
 			'longitude': longitude,
 			'id': foto_id,
 			'created_at': created_at
-		}
+		})
 
 	def create(self, validated_data):
 
