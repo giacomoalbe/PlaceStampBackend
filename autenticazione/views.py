@@ -323,6 +323,9 @@ class Upload(views.APIView):
 		try:
 			# Qui ci aspettiamo una request contentente:
 			# image, compass, longitude e latitude (e user a breve TODO)
+
+			print request.data
+
 			image = request.data.get('image', None)
 			compass = request.data.get('compass', -1)
 			longitude = request.data.get('long', -1)
@@ -359,7 +362,7 @@ class Upload(views.APIView):
 				print newFotoSerial.is_valid()
 
 				if newFotoSerial.is_valid():
-					return Response({str(newFotoSerial.data)}, status=status.HTTP_201_CREATED)
+					return Response({'foto': newFotoSerial.data}, status=status.HTTP_201_CREATED)
 				else: 
 					return Response({"error": "Foto con campi non validi!", 'foto': newFotoSerial.data}, status=status.HTTP_400_BAD_REQUEST)
 				
@@ -384,5 +387,15 @@ def show_photos(request):
 	return render_to_response('photo-list.html',
 								{'foto': fotoDict})
 
+class FindPhotos(views.APIView):
 
+	def get(self, request):
+
+		querySet = Foto.objects.all()
+		serialData = FotoSerializer(data=list(querySet), many=True)
+
+		if serialData.is_valid():
+			return Response({'data': serialData.data}, status=status.HTTP_200_OK)
+		else:
+			return Response({'errors': serialData.errors}, status=status.HTTP_400_BAD_REQUEST)
 

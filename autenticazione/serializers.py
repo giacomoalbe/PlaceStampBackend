@@ -139,7 +139,8 @@ class FotoSerializer(serializers.BaseSerializer):
 
 	def to_representation(self, obj):
 
-		return obj
+
+		return dict(obj)
 
 
 	def to_internal_value(self, data):
@@ -168,14 +169,14 @@ class FotoSerializer(serializers.BaseSerializer):
 					'longitude': 'Questo campo non puo essere vuoto'
 				})
 
-		return json.dumps({
+		return {
 			'image': image_path,
 			'compass': compass,
 			'latitude' : latitude,
 			'longitude': longitude,
 			'id': foto_id,
 			'created_at': created_at
-		})
+		}
 
 	def create(self, validated_data):
 

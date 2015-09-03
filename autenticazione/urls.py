@@ -14,7 +14,9 @@ urlpatterns = [
 	url(r'^cars/$', views.CarsList.as_view()),
 	url(r'^cars/(?P<pk>[0-9]+)/$', views.CarDetail.as_view()),
 	url(r'^upload/$', views.Upload.as_view()),
-	url(r'^foto/$', views.show_photos)
+	url(r'^elenco_foto/$', views.show_photos),
+	url(r'^foto/$', views.FindPhotos.as_view())
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
