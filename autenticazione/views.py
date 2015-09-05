@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.views.generic import View
 
 from django.views.decorators.csrf import csrf_exempt
@@ -19,6 +19,8 @@ from autenticazione.serializers import PostSerializer, OwnerSerializer, CarSeria
 from autenticazione.permissions import IsOwnerOrReadOnly
 
 from django.contrib.auth import authenticate, login, logout
+
+from autenticazione.processing import findMainColor, findSURFMatch
 
 import sys
 
@@ -356,7 +358,15 @@ class Upload(views.APIView):
 					compass = int(compass)
 
 				# Salviamo una nuova istanza di Foto
-				newFoto = Foto.objects.create(image=nomefile, compass=compass, latitude=latitude, longitude=longitude)
+
+				# TODO:
+				# Fare la media dei colori dell'immagine e uscire il colore di media della foto
+				# (per colorare il titolo della card e alcuni dettagli)
+				# OPENCV
+
+				mainColor = findMainColor(nomefile)
+
+				newFoto = Foto.objects.create(image=nomefile, compass=compass, latitude=latitude, longitude=longitude, color=color)
 				newFotoSerial = FotoSerializer(data=newFoto)
 
 				print newFotoSerial.is_valid()
@@ -389,13 +399,77 @@ def show_photos(request):
 
 class FindPhotos(views.APIView):
 
-	def get(self, request):
+	def get(self, request, format=None):
 
-		querySet = Foto.objects.all()
-		serialData = FotoSerializer(data=list(querySet), many=True)
+		lat = request.GET.get('lat', None)
+		long = request.GET.get('long', None)
+		id = request.GET.get('id', None)
 
-		if serialData.is_valid():
-			return Response({'data': serialData.data}, status=status.HTTP_200_OK)
-		else:
-			return Response({'errors': serialData.errors}, status=status.HTTP_400_BAD_REQUEST)
+		if lat and long and id:
+			# Siamo interessati ad averle entrambe
+
+			lat = float(lat)
+			long = float(long)
+
+			# Dimensioni del "quadrato" in cui andiamo a cercare
+			accuracy = 0.0100000
+
+			lat_lt = lat + accuracy
+			lat_gt = lat - accuracy
+
+			long_lt = long + accuracy
+			long_gt = long - accuracy
+
+			# Cerchiamo nel DB per foto corrispondenti
+			querySet = Foto.objects.filter(latitude__gt = lat_gt, latitude__lt = lat_lt,
+											longitude__gt = long_gt, longitude__lt = long_lt)
+
+			if lat == 0 and long == 0:
+				querySet = Foto.objects.all()
+
+			# Ordiniamo la lista secondo la differenza 
+			# delle coordinate da quella di riferimento 
+
+			listaFoto = []
+
+			for foto in querySet:
+
+				accuracy = abs(foto.latitude - lat) + abs(foto.longitude - long)
+
+				newFoto = {
+					'image': foto.image,
+					'compass': foto.compass,
+					'longitude': foto.longitude,
+					'latitude': foto.latitude,
+					'created_at': foto.created_at,
+					'id': foto.id,
+					'accuracy': accuracy,
+					'color': foto.color
+				}
+
+				listaFoto.append(newFoto)
+
+			querySet = sorted(listaFoto, key= lambda k: k['accuracy'], reverse=True)
+
+			# Faccio il processing delle prime 4 immagini
+
+			processedImage = querySet[:3]
+
+			sourceImg = Foto.objects.filter(pk=id)[0]
+
+			if sourceImg:
+				for index, image in enumerate(processedImage):
+
+					affinity = findSURFMatch(sourceImg.image, image['image'])
+					querySet[index]['affinity'] = affinity
+			
+			serialData = FotoSerializer(data=querySet, many=True)
+
+			if serialData.is_valid():
+				return Response({'data': serialData.data}, status=status.HTTP_200_OK)
+			else:
+				return Response({'errors': serialData.errors}, status=status.HTTP_400_BAD_REQUEST)
+			
+		else: 
+			return Response({'error': "No lat or long"}, status=status.HTTP_400_BAD_REQUEST)
 

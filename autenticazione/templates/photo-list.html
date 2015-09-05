@@ -9,7 +9,7 @@
 		</style>
 	</head>
 	<body>
-		<h1>Lista delle foto!</h1>
+		<h1>Lista delle foto! {{ vuoto }}</h1>
 		{% for pic in foto %}
 			<div class = "foto-cont">
 				<img src = "{% static pic.image %}"/>
