@@ -449,10 +449,6 @@ class FindPhotos(views.APIView):
 
 			querySet = sorted(listaFoto, key= lambda k: k['accuracy'])
 
-			for image in querySet:
-
-				print image['accuracy']
-
 			# Faccio il processing delle prime 4 immagini
 
 			processedImage = querySet[:3]
@@ -463,7 +459,7 @@ class FindPhotos(views.APIView):
 				for index, image in enumerate(processedImage):
 
 					affinity = findSURFMatch(sourceImg.image, image['image'])
-					querySet[index]['affinity'] = affinity
+					querySet[index]['affinity'] = int(affinity)
 			
 			serialData = FotoSerializer(data=querySet, many=True)
 
