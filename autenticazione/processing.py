@@ -6,19 +6,21 @@ def findMainColor(image):
 
 	path = os.path.dirname(os.path.abspath(__file__)) + '/static/'
 
+	print image
+
 	imageUrl = path + image
 
 	print os.path.isfile(imageUrl)
 
 	print imageUrl
 
-	img = cv2.imread(imageUrl)
+	img = cv2.imread('static/' + str(image))
 
 	print img
 
 	if img == None:
 
-		img = cv2.imread(r'static/'+ image)
+		img = cv2.imread('static/'+ image)
 
 		if img == None:
 
