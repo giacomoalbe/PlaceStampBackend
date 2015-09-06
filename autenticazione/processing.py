@@ -5,14 +5,14 @@ import os
 def findMainColor(image):
 
 	path = os.path.dirname(os.path.abspath(__file__)) + '/static/'
-	
+
 	imageUrl = path + image
 
 	print os.path.isfile(imageUrl)
 
 	print imageUrl
 
-	img = cv2.imread(imageUrl)
+	img = cv2.imread("static/"+ imageUrl)
 
 	print img
 
