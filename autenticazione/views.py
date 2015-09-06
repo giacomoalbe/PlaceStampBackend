@@ -451,7 +451,7 @@ class FindPhotos(views.APIView):
 
 			for image in querySet:
 
-				print image.accuracy
+				print image['accuracy']
 
 			# Faccio il processing delle prime 4 immagini
 
