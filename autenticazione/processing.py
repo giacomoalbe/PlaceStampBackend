@@ -14,10 +14,10 @@ def findMainColor(image):
 
 	print imageUrl
 
-	img = cv2.imread(path + image)
+	img = cv2.imread(path + 'PND3W_1441554493373.jpg')
 
 	if img == None:
-		
+
 		print "Entra in default"
 		imageUrl = path + 'ano.jpg'
 		img = cv2.imread(imageUrl)
