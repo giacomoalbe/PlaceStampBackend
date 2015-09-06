@@ -12,7 +12,7 @@ def findMainColor(image):
 
 	if img == None:
 
-		imageUrl = path + 'ano.jpg'
+		imageUrl = path + 'default.jpg'
 		img = cv2.imread(imageUrl, cv2.IMREAD_COLOR)
 
 	imgHsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -40,12 +40,6 @@ def findSURFMatch(sourceUrl, queryUrl):
 
 	if source == None or query == None:
 		# Non trovo le immagini
-		print "Non trovo le immagini!"
-		print sourceUrl
-		print source
-		print "***********"
-		print queryUrl
-		print query
 		return -1
 
 	surf = cv2.SURF(400)
