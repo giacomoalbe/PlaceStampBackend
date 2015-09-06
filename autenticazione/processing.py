@@ -14,13 +14,13 @@ def findMainColor(image):
 
 	print imageUrl
 
-	img = cv2.imread(r'' + imageUrl)
+	img = cv2.imread(r'' + str(imageUrl), cv2.IMREAD_COLOR)
 
 	if img == None:
 
 		print "Entra in default"
 		imageUrl = path + 'ano.jpg'
-		img = cv2.imread(imageUrl)
+		img = cv2.imread(imageUrl, cv2.IMREAD_COLOR)
 
 	print "Dopo %s" % img
 
