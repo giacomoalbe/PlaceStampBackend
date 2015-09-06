@@ -150,7 +150,7 @@ class FotoSerializer(serializers.BaseSerializer):
 				  ('latitude', True),
 				  ('longitude', True),
 				  ('created_at', True),
-				  ('id', False),
+				  ('id', True),
 				  ('accuracy', False),
 				  ('color', True),
 				  ('affinity', False))
@@ -174,7 +174,7 @@ class FotoSerializer(serializers.BaseSerializer):
 				raise ValidationError({
 					field[0] : "Questo campo non puo essere vuoto"
 					})
-				
+
 			# Validazione andata a buon fine
 			results[field[0]] = tmpValue
 

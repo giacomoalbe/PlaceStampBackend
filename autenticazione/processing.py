@@ -6,23 +6,14 @@ def findMainColor(image):
 
 	path = os.path.dirname(os.path.abspath(__file__)) + r'/static/'
 
-	print image
-
 	imageUrl = path + image
-
-	print os.path.isfile(imageUrl)
-
-	print imageUrl
 
 	img = cv2.imread(r'' + str(imageUrl), cv2.IMREAD_COLOR)
 
 	if img == None:
 
-		print "Entra in default"
 		imageUrl = path + 'ano.jpg'
 		img = cv2.imread(imageUrl, cv2.IMREAD_COLOR)
-
-	print "Dopo %s" % img
 
 	imgHsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
@@ -38,7 +29,6 @@ def findMainColor(image):
 	mainColor = cv2.cvtColor(color, cv2.COLOR_HSV2RGB)
 	mainColor = (list(mainColor)[0][0][0], list(mainColor)[0][0][1], list(mainColor)[0][0][2])
 
-	print mainColor
 	return mainColor
 
 def findSURFMatch(sourceUrl, queryUrl):
