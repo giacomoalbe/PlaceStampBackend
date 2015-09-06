@@ -11,6 +11,7 @@ from rest_framework import status, generics, permissions, views
 from rest_framework.response import Response
 
 from autenticazione.serializers import FotoSerializer
+from autenticazione.models import Foto
 
 from autenticazione.processing import findMainColor, findSURFMatch
 
@@ -61,9 +62,9 @@ class Upload(views.APIView):
 				# (per colorare il titolo della card e alcuni dettagli)
 				# OPENCV
 
-				mainColor = findMainColor(nomefile)
+				#mainColor = findMainColor(nomefile)
 
-				newFoto = Foto.objects.create(image=nomefile, compass=compass, latitude=latitude, longitude=longitude, color=mainColor)
+				newFoto = Foto.objects.create(image=nomefile, compass=compass, latitude=latitude, longitude=longitude)
 				newFotoSerial = FotoSerializer(data=newFoto)
 
 				if newFotoSerial.is_valid():
