@@ -7,7 +7,11 @@ def findMainColor(image):
 	path = os.path.dirname(os.path.abspath(__file__)) + '/static/'
 	imageUrl = path + image
 
+	print imageUrl
+
 	img = cv2.imread(imageUrl)
+
+	print img
 
 	if img == None:
 		imageUrl = path + 'ano.jpg'

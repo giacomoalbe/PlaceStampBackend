@@ -157,9 +157,6 @@ class FotoSerializer(serializers.BaseSerializer):
 
 		results = {}
 
-		print data
-	
-
 		for field in fields:
 
 			tmpValue = None
@@ -170,7 +167,6 @@ class FotoSerializer(serializers.BaseSerializer):
 
 				print field[0], field[1]
 				if field[1]:
-					print "Entra %s" % field[0]  
 					tmpValue = getattr(data, field[0])
 
 			if field[1] and not tmpValue:
@@ -184,8 +180,6 @@ class FotoSerializer(serializers.BaseSerializer):
 			results[field[0]] = tmpValue
 
 		results['created_at'] = int(time.mktime(results['created_at'].timetuple())*1000)
-
-		print results
 
 		return { i:results[i] for i in results if results[i] != None}
 
