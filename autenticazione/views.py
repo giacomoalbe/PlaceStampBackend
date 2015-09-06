@@ -449,6 +449,10 @@ class FindPhotos(views.APIView):
 
 			querySet = sorted(listaFoto, key= lambda k: k['accuracy'])
 
+			for image in querySet:
+
+				print image.accuracy
+
 			# Faccio il processing delle prime 4 immagini
 
 			processedImage = querySet[:3]
