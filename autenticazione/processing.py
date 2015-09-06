@@ -24,7 +24,7 @@ def findMainColor(image):
 			imageUrl = path + 'ano.jpg'
 			img = cv2.imread(imageUrl)
 
-print "Dopo %s" % img
+	print "Dopo %s" % img
 
 	imgHsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
