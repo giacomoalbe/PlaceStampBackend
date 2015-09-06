@@ -16,7 +16,7 @@ def findMainColor(image):
 
 	img = cv2.imread('static/' + str(image))
 
-	print img
+	print len(img)
 
 	if img == None:
 
