@@ -153,14 +153,25 @@ class FotoSerializer(serializers.BaseSerializer):
 				  ('id', False),
 				  ('accuracy', False),
 				  ('color', True),
-				  ('compass', False),
 				  ('affinity', False))
 
 		results = {}
 
+		print data
+	
+
 		for field in fields:
 
-			tmpValue = data.get(field[0], None)
+			tmpValue = None
+
+			try:
+				tmpValue = data.get(field[0], None)
+			except:
+
+				print field[0], field[1]
+				if field[1]:
+					print "Entra %s" % field[0]  
+					tmpValue = getattr(data, field[0])
 
 			if field[1] and not tmpValue:
 				# Campo richiesto! Non puo essere nullo!
@@ -168,11 +179,13 @@ class FotoSerializer(serializers.BaseSerializer):
 					field[0] : "Questo campo non puo essere vuoto"
 					})
 
+			print "Prima di results %s" % field[0]
 			# Validazione andata a buon fine
 			results[field[0]] = tmpValue
 
 		results['created_at'] = int(time.mktime(results['created_at'].timetuple())*1000)
-		results['color'] = results['color'].split(",")
+
+		print results
 
 		return { i:results[i] for i in results if results[i] != None}
 

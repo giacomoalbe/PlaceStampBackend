@@ -364,11 +364,15 @@ class Upload(views.APIView):
 				# (per colorare il titolo della card e alcuni dettagli)
 				# OPENCV
 
+				print "Arriva"
 				mainColor = findMainColor(nomefile)
+				print "Dopo"
+				print mainColor
 
 				newFoto = Foto.objects.create(image=nomefile, compass=compass, latitude=latitude, longitude=longitude, color=mainColor)
 				newFotoSerial = FotoSerializer(data=newFoto)
 
+				print "Qui Arriva"
 				print newFotoSerial.is_valid()
 
 				if newFotoSerial.is_valid():
