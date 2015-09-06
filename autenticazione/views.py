@@ -447,7 +447,7 @@ class FindPhotos(views.APIView):
 
 				listaFoto.append(newFoto)
 
-			querySet = sorted(listaFoto, key= lambda k: k['accuracy'], reverse=True)
+			querySet = sorted(listaFoto, key= lambda k: k['accuracy'])
 
 			# Faccio il processing delle prime 4 immagini
 
