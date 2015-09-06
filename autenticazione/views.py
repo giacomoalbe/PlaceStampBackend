@@ -366,7 +366,7 @@ class Upload(views.APIView):
 
 				mainColor = findMainColor(nomefile)
 
-				newFoto = Foto.objects.create(image=nomefile, compass=compass, latitude=latitude, longitude=longitude, color=color)
+				newFoto = Foto.objects.create(image=nomefile, compass=compass, latitude=latitude, longitude=longitude, color=mainColor)
 				newFotoSerial = FotoSerializer(data=newFoto)
 
 				print newFotoSerial.is_valid()
