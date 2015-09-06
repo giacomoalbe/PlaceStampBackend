@@ -21,6 +21,8 @@ def findMainColor(image):
 		img = cv2.imread(r'static/'+ image)
 
 		if img == None:
+
+			print "Entra in default"
 			imageUrl = path + 'ano.jpg'
 			img = cv2.imread(imageUrl)
 
