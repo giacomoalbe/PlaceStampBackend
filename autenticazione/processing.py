@@ -12,13 +12,19 @@ def findMainColor(image):
 
 	print imageUrl
 
-	img = cv2.imread("static/"+ imageUrl)
+	img = cv2.cv.loadImage(imageUrl)
 
 	print img
 
 	if img == None:
-		imageUrl = path + 'ano.jpg'
-		img = cv2.imread(imageUrl)
+
+		img = cv2.imread(r'static/'+ image)
+
+		if img == None:
+			imageUrl = path + 'ano.jpg'
+			img = cv2.imread(imageUrl)
+
+print "Dopo %s" % img
 
 	imgHsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
