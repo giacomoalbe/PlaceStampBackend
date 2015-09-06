@@ -174,8 +174,7 @@ class FotoSerializer(serializers.BaseSerializer):
 				raise ValidationError({
 					field[0] : "Questo campo non puo essere vuoto"
 					})
-
-			print "Prima di results %s" % field[0]
+				
 			# Validazione andata a buon fine
 			results[field[0]] = tmpValue
 

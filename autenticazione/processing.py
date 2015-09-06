@@ -5,7 +5,10 @@ import os
 def findMainColor(image):
 
 	path = os.path.dirname(os.path.abspath(__file__)) + '/static/'
+	
 	imageUrl = path + image
+
+	print os.path.isfile(imageUrl)
 
 	print imageUrl
 
@@ -31,6 +34,7 @@ def findMainColor(image):
 	mainColor = cv2.cvtColor(color, cv2.COLOR_HSV2RGB)
 	mainColor = (list(mainColor)[0][0][0], list(mainColor)[0][0][1], list(mainColor)[0][0][2])
 
+	print "Alla fine: %s" % os.path.isfile(imageUrl)
 	return mainColor
 
 def findSURFMatch(sourceUrl, queryUrl):
