@@ -1,1 +1,0 @@
-{"status":"OK","foto":{"image":"culo.jpg","compass":132,"latitude":78.8,"longitude":100.1}}

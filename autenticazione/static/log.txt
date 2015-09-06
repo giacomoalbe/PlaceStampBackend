@@ -1,1 +1,0 @@
-{"foto":{"latitude":"12.3","compass":10,"color":[231,230,229],"created_at":1441554001000,"image":"fratellinodelcazzo.jpg","longitude":"45.5"}}

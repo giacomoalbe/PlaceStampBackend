@@ -84,9 +84,3 @@ USE_TZ = True
 
 STATIC_ROOT = '/static/'
 STATIC_URL = '/static/'
-#STATICFILES_DIR = (os.path.join(BASE_DIR, 'static/'),)
-
-
-# Base Class for auth managing
-
-AUTH_USER_MODEL = 'autenticazione.PSUser'
