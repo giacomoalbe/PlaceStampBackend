@@ -12,7 +12,7 @@ def findMainColor(image):
 
 	print imageUrl
 
-	img = cv2.cv.loadImage(imageUrl)
+	img = cv2.imread(imageUrl)
 
 	print img
 
